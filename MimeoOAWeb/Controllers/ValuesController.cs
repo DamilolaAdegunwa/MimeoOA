@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Abp.DoNetCore.Application;
+using MimeoOAWeb.Core.MimeoDBContext;
 
 namespace MimeoOAWeb.Controllers
 {
@@ -19,6 +20,7 @@ namespace MimeoOAWeb.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            this.userAppService.CreateUser();
             return new string[] { "value1", "value2" };
         }
 

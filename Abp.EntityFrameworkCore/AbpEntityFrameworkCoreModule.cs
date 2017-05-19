@@ -25,7 +25,7 @@ namespace Abp.EntityFrameworkCore
         }
         public override void Initialize(ContainerBuilder builder)
         {
-            builder.RegisterGeneric(typeof(EfCoreRepositoryBase<>)).As(typeof(IRepository<,>));
+            builder.RegisterGeneric(typeof(EfCoreRepositoryBaseOfEntity<>)).As(typeof(IRepository<>));
             //RegisterGenericRepositoriesAndMatchDbContexes(builder);
         }
 
@@ -47,7 +47,6 @@ namespace Abp.EntityFrameworkCore
             {
                 return;
             }
-
             EfCoreGenericRepositoryRegistrar register = new EfCoreGenericRepositoryRegistrar();
 
             foreach (var dbContextType in dbContextTypes)

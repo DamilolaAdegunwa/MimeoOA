@@ -6,5 +6,6 @@ namespace Abp.DoNetCore.Application
 {
     public interface IUserAppService
     {
+        void CreateUser();
     }
 }

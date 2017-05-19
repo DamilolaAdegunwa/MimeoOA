@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Abp.DoNetCore;
 using MimeoOAWeb.Core.Module;
+using MimeoOAWeb.Core.Infrastructure;
 
 namespace MimeoOAWeb
 {
@@ -39,7 +40,7 @@ namespace MimeoOAWeb
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            ConfigurationManager.SetConfig(Configuration);
             app.UseMvc();
         }
     }

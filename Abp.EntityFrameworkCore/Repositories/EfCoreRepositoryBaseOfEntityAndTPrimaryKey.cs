@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Abp.EntityFrameworkCore.Repositories
 {
-    public class EfCoreRepositoryBase<TEntity> : AbpRepositoryBase<TEntity, Guid> where TEntity : class, IEntity<Guid>
+    public class EfCoreRepositoryBase<TEntity> : AbpRepositoryBase<TEntity, int> where TEntity : class, IEntity<int>
     {
         public virtual DbContext Context { get { return _dbContextProvider.Resolve(); } }
         public virtual DbSet<TEntity> Table { get { return Context.Set<TEntity>(); } }
@@ -35,7 +35,7 @@ namespace Abp.EntityFrameworkCore.Repositories
             Table.Remove(entity);
         }
 
-        public override void Delete(Guid id)
+        public override void Delete(int id)
         {
             var entity = GetFromChangeTrackerOrNull(id);
             if(entity!=null)
@@ -58,7 +58,8 @@ namespace Abp.EntityFrameworkCore.Repositories
 
         public override TEntity Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            Table.Add(entity);
+            return entity;
         }
 
         public override TEntity Update(TEntity entity)
@@ -66,13 +67,13 @@ namespace Abp.EntityFrameworkCore.Repositories
             throw new NotImplementedException();
         }
 
-        private TEntity GetFromChangeTrackerOrNull(Guid id)
+        private TEntity GetFromChangeTrackerOrNull(int id)
         {
             var entry = Context.ChangeTracker.Entries()
                 .FirstOrDefault(
                     ent =>
                         ent.Entity is TEntity &&
-                        EqualityComparer<Guid>.Default.Equals(id, (ent.Entity as TEntity).Id)
+                        EqualityComparer<int>.Default.Equals(id, (ent.Entity as TEntity).Id)
                 );
 
             return entry?.Entity as TEntity;

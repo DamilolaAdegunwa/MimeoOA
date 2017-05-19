@@ -4,7 +4,7 @@ using System;
 
 namespace Abp.Domain.Entities
 {
-    public interface IAggregateRoot : IAggregateRoot<Guid>, IEntity
+    public interface IAggregateRoot : IAggregateRoot<int>, IEntity
     {
 
     }

@@ -28,7 +28,7 @@ namespace MimeoOAWeb.Core.Extensions
             }
 
             builder.Register<DbContextOptions>(p => p.Resolve<DbContextOptions<TContext>>()).InstancePerLifetimeScope();
-            builder.RegisterType<TContext>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<TContext>().As<DbContext>().InstancePerLifetimeScope();
             return builder;
         }
 

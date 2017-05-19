@@ -12,6 +12,7 @@ namespace Abp.EntityFrameworkCore
 
         public DefaultDbContextResolver(DbContext dbContext)
         {
+            //this.dbContext = serviceProvider.GetService(typeof(DbContext)) as DbContext;
             this.dbContext = dbContext;
         }
         public DbContext Resolve()
