@@ -3,6 +3,7 @@ using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Abp.Domain.Uow
@@ -20,8 +21,13 @@ namespace Abp.Domain.Uow
             var unitOfWorkAttr = UnitOfWorkAttribute.GetUnitOfWorkAttributeOrNull(invocation.MethodInvocationTarget);
             if (unitOfWorkAttr == null)
             {
-                invocation.Proceed();
-                return;
+                unitOfWorkAttr = UnitOfWorkAttribute.GetUnitOfWorkAttributeOrNullByClass(invocation.TargetType);
+                if (unitOfWorkAttr == null)
+                {
+                    invocation.Proceed();
+                    return;
+
+                }
             }
             PerformUow(invocation, unitOfWorkAttr.CreateOptions());
         }

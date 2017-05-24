@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Abp.Domain.Uow
 {
-    public class UnitOfWorkAttribute:Attribute
+    public class UnitOfWorkAttribute : Attribute
     {/// <summary>
      /// Scope option.
      /// </summary>
@@ -75,31 +75,6 @@ namespace Abp.Domain.Uow
             IsTransactional = isTransactional;
             Timeout = TimeSpan.FromMilliseconds(timeout);
         }
-
-        /// <summary>
-        /// Creates a new <see cref="UnitOfWorkAttribute"/> object.
-        /// <see cref="IsTransactional"/> is automatically set to true.
-        /// </summary>
-        /// <param name="isolationLevel">Transaction isolation level</param>
-        //public UnitOfWorkAttribute(IsolationLevel isolationLevel)
-        //{
-        //    IsTransactional = true;
-        //    IsolationLevel = isolationLevel;
-        //}
-
-        ///// <summary>
-        ///// Creates a new <see cref="UnitOfWorkAttribute"/> object.
-        ///// <see cref="IsTransactional"/> is automatically set to true.
-        ///// </summary>
-        ///// <param name="isolationLevel">Transaction isolation level</param>
-        ///// <param name="timeout">Transaction  timeout as milliseconds</param>
-        //public UnitOfWorkAttribute(IsolationLevel isolationLevel, int timeout)
-        //{
-        //    IsTransactional = true;
-        //    IsolationLevel = isolationLevel;
-        //    Timeout = TimeSpan.FromMilliseconds(timeout);
-        //}
-
         /// <summary>
         /// Creates a new <see cref="UnitOfWorkAttribute"/> object.
         /// <see cref="IsTransactional"/> is automatically set to true.
@@ -139,12 +114,31 @@ namespace Abp.Domain.Uow
             return null;
         }
 
+        internal static UnitOfWorkAttribute GetUnitOfWorkAttributeOrNullByClass(Type type)
+        {
+            // Judging the UnitOfWorkAttribute was included in Current type
+            var attrs = type.GetTypeInfo().GetCustomAttributes(true).OfType<UnitOfWorkAttribute>().ToArray();
+            if (attrs.Length > 0)
+            {
+                return attrs[0];
+            }
+            else
+            {
+                //juding the UnitOfWorkAttribute was included in baseType
+                attrs = type.GetTypeInfo().BaseType.GetTypeInfo().GetCustomAttributes(true).OfType<UnitOfWorkAttribute>().ToArray();
+                if (attrs.Length > 0)
+                {
+                    return attrs[0];
+                }
+            }
+            return null;
+        }
+
         internal UnitOfWorkOptions CreateOptions()
         {
             return new UnitOfWorkOptions
             {
                 IsTransactional = IsTransactional,
-                //IsolationLevel = IsolationLevel,
                 Timeout = Timeout,
                 Scope = Scope
             };

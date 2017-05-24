@@ -17,8 +17,19 @@ namespace Abp.EntityFrameworkCore.Uow
         {
             this.dbContextResolver = dbContextResolver;
             ActiveDbContexts = new Dictionary<string, DbContext>();
+            Completed += EfCoreUnitOfWork_Completed;
+            Disposed += EfCoreUnitOfWork_Disposed;
         }
 
+        private void EfCoreUnitOfWork_Disposed(object sender, EventArgs e)
+        {
+           //Dispose the thrid plug or other instance
+        }
+
+        private void EfCoreUnitOfWork_Completed(object sender, EventArgs e)
+        {
+           //It need to send email or do other thing.
+        }
         public override void SaveChanges()
         {
             foreach (var dbContext in ActiveDbContexts.Values)
@@ -35,6 +46,12 @@ namespace Abp.EntityFrameworkCore.Uow
             }
         }
 
+        protected override void BeginUow()
+        {
+            GetOrCreateDbcontext<DbContext>();
+            base.BeginUow();
+        }
+
         public virtual TDbContext GetOrCreateDbcontext<TDbContext>() where TDbContext : DbContext
         {
             var dbConnectDbContextType = typeof(TDbContext);
@@ -46,6 +63,10 @@ namespace Abp.EntityFrameworkCore.Uow
             {
 
                 dbContext = this.dbContextResolver.Resolve();
+                if (Options.IsTransactional == true)
+                {
+                    BeginTransaction(dbContext);
+                }
                 ActiveDbContexts[dbContextKey] = dbContext;
             }
             return (TDbContext)dbContext;
@@ -65,7 +86,7 @@ namespace Abp.EntityFrameworkCore.Uow
 
         protected override void DisposeUow()
         {
-            ActiveDbContexts.Values.Clear();
+            ActiveDbContexts.Clear();
         }
 
         private void BeginTransaction(DbContext dbContext)
@@ -74,7 +95,10 @@ namespace Abp.EntityFrameworkCore.Uow
         }
         private void CommitTransaction()
         {
-            SharedTransaction.Commit();
+            if (Options.IsTransactional != true)
+            {
+                return;
+            }
             foreach (var dbContext in ActiveDbContexts.Values)
             {
                 dbContext.Database.CommitTransaction();
@@ -93,6 +117,7 @@ namespace Abp.EntityFrameworkCore.Uow
         protected virtual void Release(DbContext dbContext)
         {
             dbContext.Dispose();
+            dbContext.Database.CurrentTransaction.Dispose();
         }
     }
 }

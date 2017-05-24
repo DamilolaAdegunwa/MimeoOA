@@ -20,16 +20,15 @@ namespace Abp
 
         public override void PostInitialize(ContainerBuilder builder)
         {
-            builder.RegisterType<NullUnitOfWork>().As<IUnitOfWork>();
-            builder.RegisterType<EventBus>().As<IEventBus>();
+            builder.RegisterType<EventBus>().As<IEventBus>().InstancePerLifetimeScope(); ;
 
         }
         public override void Initialize(ContainerBuilder builder)
         {
-            builder.RegisterType<UnitOfWorkOptions>().As<IUnitOfWorkDefaultOptions>();
-            builder.RegisterType<CallContextCurrentUnitofWorkProvider>().As<ICurrentUnitOfWorkProvider>();
-            builder.RegisterType<UnitOfWorkManager>().As<IUnitOfWorkManager>().Named<IUnitOfWorkManager>("IUnitOfWorkManager");
-            builder.RegisterType<UnitOfWorkInterceptor>().WithParameter(new ResolvedParameter((pi, cts) => pi.Name == "unitOfWorkManager", (pi, ctx) => ctx.ResolveNamed<IUnitOfWorkManager>("IUnitOfWorkManager")));
+            builder.RegisterType<UnitOfWorkOptions>().As<IUnitOfWorkDefaultOptions>().InstancePerLifetimeScope(); ;
+            builder.RegisterType<CallContextCurrentUnitofWorkProvider>().As<ICurrentUnitOfWorkProvider>().InstancePerLifetimeScope(); ;
+            builder.RegisterType<UnitOfWorkManager>().As<IUnitOfWorkManager>().Named<IUnitOfWorkManager>("IUnitOfWorkManager").InstancePerLifetimeScope(); ;
+            builder.RegisterType<UnitOfWorkInterceptor>().WithParameter(new ResolvedParameter((pi, cts) => pi.Name == "unitOfWorkManager", (pi, ctx) => ctx.ResolveNamed<IUnitOfWorkManager>("IUnitOfWorkManager"))).InstancePerLifetimeScope(); ;
         }
     }
 }   

@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using Abp.DoNetCore;
 using MimeoOAWeb.Core.Module;
 using MimeoOAWeb.Core.Infrastructure;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace MimeoOAWeb
 {
@@ -32,6 +35,23 @@ namespace MimeoOAWeb
         {
             // Add framework services.
             services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "1.0 alpha",  //beta
+                    Title = "MimeoCore API",
+                    Description = "A simple example Dotnet Core Web API",
+                    TermsOfService = "None",
+                });
+                //MimeoOAWeb
+                //Set the comments path for the swagger json and ui.
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var xmlPath = Path.Combine(basePath, "MimeoOAWeb.xml");
+                c.IgnoreObsoleteActions();
+                c.IgnoreObsoleteProperties();
+                c.IncludeXmlComments(xmlPath);
+            });
             return services.AddAbp<MimeoOAModule>();
         }
 
@@ -42,6 +62,10 @@ namespace MimeoOAWeb
             loggerFactory.AddDebug();
             ConfigurationManager.SetConfig(Configuration);
             app.UseMvc();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mimeo Core Api V1");
+            });
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Abp.Domain.Uow;
 
 namespace Abp.Modules
 {
     public abstract class AbpModule : Autofac.Module
     {
-        protected internal IIocManager IocManager { get; internal set; }
         public virtual void PreInitialize(ContainerBuilder builder)
         {
 
@@ -34,6 +35,52 @@ namespace Abp.Modules
             this.Initialize(builder);
             this.PostInitialize(builder);
             base.Load(builder);
+        }
+
+        /// <summary>
+        /// Registers a type with it's implementation.
+        /// </summary>
+        /// <param name="type">Type of the class</param>
+        /// <param name="impl">The type that implements <paramref name="type"/></param>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        protected void Register(Type type, Type impl, ContainerBuilder builder, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+        {
+            switch (lifeStyle)
+            {
+                case DependencyLifeStyle.Singleton:
+                    builder.RegisterType(impl).As(type).SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+                case DependencyLifeStyle.Transient:
+                    builder.RegisterType(impl).As(type).InstancePerLifetimeScope().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+                default:
+                    builder.RegisterType(impl).As(type).SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+            }
+        }
+        /// <summary>
+        /// Registers a type with it's implementation.
+        /// </summary>
+        /// <typeparam name="TType">Registering type</typeparam>
+        /// <typeparam name="TImpl">The type that implements <see cref="TType"/></typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        protected void Register<TType, TImpl>(ContainerBuilder builder, DependencyLifeStyle lifeStyle)
+             where TType : class
+             where TImpl : class, TType
+        {
+            switch (lifeStyle)
+            {
+                case DependencyLifeStyle.Singleton:
+                    builder.RegisterType<TImpl>().As<TType>().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+                case DependencyLifeStyle.Transient:
+                    builder.RegisterType<TImpl>().As<TType>().InstancePerLifetimeScope().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+                default:
+                    builder.RegisterType<TImpl>().As<TType>().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(UnitOfWorkInterceptor));
+                    break;
+            }
+
         }
         public static bool IsAbpModule(Type type)
         {

@@ -75,8 +75,6 @@ namespace Abp.Modules
                 {
                     throw new AbpInitializationException("This type is not an ABP module: " + moduleType.AssemblyQualifiedName);
                 }
-
-                moduleObject.IocManager = _iocManager;
                 var moduleInfo = new AbpModuleInfo(moduleType, moduleObject);
 
                 _modules.Add(moduleInfo);

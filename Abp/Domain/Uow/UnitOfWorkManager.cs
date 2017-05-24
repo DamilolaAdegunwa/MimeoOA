@@ -9,7 +9,7 @@ namespace Abp.Domain.Uow
 {
     internal class UnitOfWorkManager : IUnitOfWorkManager, ITransientDependency
     {
-        private readonly IIocResolver _iocResolver;
+        private readonly IUnitOfWork _iocUnitOfWork;
         private readonly ICurrentUnitOfWorkProvider _currentUnitOfWorkProvider;
         private readonly IUnitOfWorkDefaultOptions _defaultOptions;
         public IActiveUnitOfWork Current
@@ -20,9 +20,9 @@ namespace Abp.Domain.Uow
             }
         }
 
-        public UnitOfWorkManager(IIocResolver iocResolver, ICurrentUnitOfWorkProvider currentUnitOfWorkProvider, IUnitOfWorkDefaultOptions defaultOptions)
+        public UnitOfWorkManager(IUnitOfWork iocUnitOfWork, ICurrentUnitOfWorkProvider currentUnitOfWorkProvider, IUnitOfWorkDefaultOptions defaultOptions)
         {
-            _iocResolver = iocResolver;
+            _iocUnitOfWork = iocUnitOfWork;
             _currentUnitOfWorkProvider = currentUnitOfWorkProvider;
             _defaultOptions = defaultOptions;
         }
@@ -34,12 +34,12 @@ namespace Abp.Domain.Uow
         public IUnitOfWorkCompleteHandle Begin(UnitOfWorkOptions options)
         {
             options.FillDefaultsForNonProvidedOptions(_defaultOptions);
-            if (options.Scope == TransactionScopeOption.Required && _currentUnitOfWorkProvider != null)
-            {
-                return new InnerUnitOfWorkCompleteHandle();
-            }
+            //if (options.Scope == TransactionScopeOption.Required && _currentUnitOfWorkProvider != null)
+            //{
+            //    return new InnerUnitOfWorkCompleteHandle();
+            //}
 
-            var uow = _iocResolver.Resolve<IUnitOfWork>();
+            var uow = _iocUnitOfWork;
             uow.Completed += (sender, args) =>
             {
                 _currentUnitOfWorkProvider.Current = null;
@@ -52,7 +52,7 @@ namespace Abp.Domain.Uow
 
             uow.Disposed += (sender, args) =>
             {
-                _iocResolver.Release(uow);
+                uow.Dispose();
             };
 
             uow.Begin(options);

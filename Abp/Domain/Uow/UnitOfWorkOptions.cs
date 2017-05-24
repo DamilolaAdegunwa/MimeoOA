@@ -8,7 +8,7 @@ namespace Abp.Domain.Uow
     /// <summary>
     /// Unit of work options.
     /// </summary>
-    public class UnitOfWorkOptions: IUnitOfWorkDefaultOptions
+    public class UnitOfWorkOptions : IUnitOfWorkDefaultOptions
     {
         /// <summary>
         /// Scope option.
@@ -28,25 +28,18 @@ namespace Abp.Domain.Uow
         public TimeSpan? Timeout { get; set; }
 
         /// <summary>
-        /// If this UOW is transactional, this option indicated the isolation level of the transaction.
-        /// Uses default value if not supplied.
-        /// </summary>
-        //public IsolationLevel? IsolationLevel { get; set; }
-
-        /// <summary>
-        /// This option should be set to <see cref="TransactionScopeAsyncFlowOption.Enabled"/>
-        /// if unit of work is used in an async scope.
-        /// </summary>
-        //public TransactionScopeAsyncFlowOption? AsyncFlowOption { get; set; }
-
-        /// <summary>
         /// Can be used to enable/disable some filters. 
         /// </summary>
         public List<DataFilterConfiguration> FilterOverrides { get; private set; }
-        TransactionScopeOption IUnitOfWorkDefaultOptions.Scope { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        bool IUnitOfWorkDefaultOptions.IsTransactional { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public IReadOnlyList<DataFilterConfiguration> Filters => throw new NotImplementedException();
+        TransactionScopeOption IUnitOfWorkDefaultOptions.Scope { get; set; }
+
+        bool IUnitOfWorkDefaultOptions.IsTransactional { get; set; }
+
+        /// <summary>
+        /// It will add data filter when the action was executed before.
+        /// </summary>
+        public IReadOnlyList<DataFilterConfiguration> Filters { get; private set; }
 
         /// <summary>
         /// Creates a new <see cref="UnitOfWorkOptions"/> object.
@@ -59,7 +52,6 @@ namespace Abp.Domain.Uow
         internal void FillDefaultsForNonProvidedOptions(IUnitOfWorkDefaultOptions defaultOptions)
         {
             //TODO: Do not change options object..?
-
             if (!IsTransactional.HasValue)
             {
                 IsTransactional = defaultOptions.IsTransactional;

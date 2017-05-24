@@ -1,7 +1,9 @@
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.deps.json
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.runtimeconfig.json
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.runtimeconfig.dev.json
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.xml
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.pdb
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.DoNetCore.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.dll
@@ -10,6 +12,5 @@ F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netco
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.pdb
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.csprojResolveAssemblyReference.cache
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.AssemblyInfo.cs
-F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\MimeoOAWeb.pdb
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.pdb
