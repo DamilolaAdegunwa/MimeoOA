@@ -13,7 +13,13 @@ namespace MimeoOAWeb.Core.MimeoDBContext
 {
     public class MimeoOAContext : AbpDbContext
     {
-        public DbSet<User> User { get; set; }
+        public DbSet<User> mo_user { get; set; }
+        public DbSet<Role> mo_role { get; set; }
+        public DbSet<UserInfo> mo_user_info { get; set; }
+        public DbSet<UserRole> mo_user_role { get; set; }
+        public DbSet<Permission> mo_permission { get; set; }
+        public DbSet<RolePermission> mo_role_permission { get; set; }
+
         private readonly MimeoConfiguration mimeoConfiguration;
         public MimeoOAContext()
         {
