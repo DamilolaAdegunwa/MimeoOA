@@ -14,3 +14,5 @@ F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netco
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.AssemblyInfo.cs
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\obj\Debug\netcoreapp1.1\MimeoOAWeb.pdb
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.AutoMapper.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\MimeoOAWeb\bin\Debug\netcoreapp1.1\Abp.AutoMapper.pdb

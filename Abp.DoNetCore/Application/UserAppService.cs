@@ -2,6 +2,7 @@
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
+using Abp.DoNetCore.Application.Dtos;
 using Abp.DoNetCore.Domain;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,9 @@ namespace Abp.DoNetCore.Application
             this.rolePermissionRepository = rolePermissionRepository;
             this.permissionRepository = permissionRepository;
         }
-        public void CreateUser()
+        public void CreateUser(UserCreateInput input)
         {
             this.userRepository.Insert(new User { AccountCode = "test123", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", CreateTime = DateTime.UtcNow,LastLoginIP="127.0.0.1",LastLoginTime=DateTime.UtcNow,Password="123456",Status="Active"});
-             
         }
     }
 }

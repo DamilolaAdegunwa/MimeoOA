@@ -20,7 +20,7 @@ namespace MimeoOAWeb.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            userAppService.CreateUser();
+            //userAppService.CreateUser();
             return new string[] { "value1", "value2" };
         }
 

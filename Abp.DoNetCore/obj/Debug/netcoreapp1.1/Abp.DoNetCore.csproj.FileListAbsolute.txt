@@ -9,3 +9,5 @@ F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\ne
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.AssemblyInfo.cs
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.pdb
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.pdb

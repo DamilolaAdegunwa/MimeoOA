@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "6999329be28d72081c4ecdf6cb86a7e787985607"
+    "signature": "a19d3b97e0c4e2cb85cce0e76004197704e23f53"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,7 @@
       "abp.donetcore/1.0.0": {
         "dependencies": {
           "Abp": "1.0.0",
+          "Abp.AutoMapper": "1.0.0",
           "Abp.EntityFrameworkCore": "1.0.0"
         },
         "runtime": {
@@ -36,6 +37,15 @@
         },
         "runtime": {
           "lib/netstandard1.3/Autofac.Extras.DynamicProxy.dll": {}
+        }
+      },
+      "automapper/6.0.2": {
+        "dependencies": {
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
       "castle.core/4.0.0": {
@@ -540,6 +550,15 @@
           "Abp.dll": {}
         }
       },
+      "abp.automapper/1.0.0": {
+        "dependencies": {
+          "Abp": "1.0.0",
+          "AutoMapper": "6.0.2"
+        },
+        "runtime": {
+          "Abp.AutoMapper.dll": {}
+        }
+      },
       "abp.entityframeworkcore/1.0.0": {
         "dependencies": {
           "Abp": "1.0.0",
@@ -578,6 +597,13 @@
       "sha512": "sha512-JzuIqTj9W8Xfdny+Kyek+uhqH5HPe2tLR0zRuj5HCEkloZFlmXzGHBu45g3bJHeHRYW/z5UR4Ja1k9i31nOR+w==",
       "path": "autofac.extras.dynamicproxy/4.2.1",
       "hashPath": "autofac.extras.dynamicproxy.4.2.1.nupkg.sha512"
+    },
+    "automapper/6.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uI4uPyibgP4+2zn21fVqy0ep+eYeB5IcfjanyUESj+F0qcrOYpAW4iH2+xKET0vfhgJn4U1c4xN3stKUhygTmQ==",
+      "path": "automapper/6.0.2",
+      "hashPath": "automapper.6.0.2.nupkg.sha512"
     },
     "castle.core/4.0.0": {
       "type": "package",
@@ -979,6 +1005,11 @@
       "hashPath": "system.xml.xmlserializer.4.0.11.nupkg.sha512"
     },
     "abp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "abp.automapper/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
