@@ -20,6 +20,7 @@ namespace Abp.AutoMapper
         public override void Initialize(ContainerBuilder builder)
         {
             CreateMappings();
+            builder.RegisterType<Mapper>().As<IMapper>();
         }
 
         public void CreateMappings()

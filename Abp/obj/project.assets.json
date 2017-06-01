@@ -7781,6 +7781,9 @@
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "files": {
+        "lib/netcoreapp1.1/Abp.dll": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\bin\\placeholder\\netcoreapp1.1\\Abp.dll"
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {}
@@ -7790,22 +7793,21 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Autofac.Extensions.DependencyInjection": {
-            "target": "Package",
-            "version": "4.1.0"
-          },
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.2",
-            "autoReferenced": true
-          },
-          "Autofac.Extras.DynamicProxy": {
-            "target": "Package",
-            "version": "4.2.1"
+            "version": "1.1.2"
           },
           "Autofac": {
             "target": "Package",
             "version": "4.6.0"
+          },
+          "Autofac.Extensions.DependencyInjection": {
+            "target": "Package",
+            "version": "4.1.0"
+          },
+          "Autofac.Extras.DynamicProxy": {
+            "target": "Package",
+            "version": "4.2.1"
           },
           "Newtonsoft.Json": {
             "target": "Package",

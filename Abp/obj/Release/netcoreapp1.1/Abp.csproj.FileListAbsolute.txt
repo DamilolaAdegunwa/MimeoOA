@@ -1,0 +1,6 @@
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\bin\Release\netcoreapp1.1\Abp.deps.json
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\bin\Release\netcoreapp1.1\Abp.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\bin\Release\netcoreapp1.1\Abp.pdb
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\obj\Release\netcoreapp1.1\Abp.AssemblyInfo.cs
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\obj\Release\netcoreapp1.1\Abp.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp\obj\Release\netcoreapp1.1\Abp.pdb

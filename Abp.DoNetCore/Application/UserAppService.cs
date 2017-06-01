@@ -4,6 +4,7 @@ using Abp.Domain.Services;
 using Abp.Domain.Uow;
 using Abp.DoNetCore.Application.Dtos;
 using Abp.DoNetCore.Domain;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,7 +31,8 @@ namespace Abp.DoNetCore.Application
         }
         public void CreateUser(UserCreateInput input)
         {
-            this.userRepository.Insert(new User { AccountCode = "test123", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", CreateTime = DateTime.UtcNow,LastLoginIP="127.0.0.1",LastLoginTime=DateTime.UtcNow,Password="123456",Status="Active"});
+            var temp = Mapper.Map<UserCreateInput, User>(input);
+            //this.userRepository.Insert(new User { AccountCode = "test123", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", CreateTime = DateTime.UtcNow, LastLoginIP = "127.0.0.1", LastLoginTime = DateTime.UtcNow, Password = "123456", Status = "Active" });
         }
     }
 }

@@ -2568,6 +2568,12 @@
           "Autofac.Extras.DynamicProxy": "4.2.1",
           "Microsoft.NETCore.App": "1.1.2",
           "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
         }
       }
     }
@@ -7839,6 +7845,9 @@
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "files": {
+        "lib/netcoreapp1.1/Abp.AutoMapper.dll": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.AutoMapper\\bin\\placeholder\\netcoreapp1.1\\Abp.AutoMapper.dll"
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
@@ -7854,8 +7863,7 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.2",
-            "autoReferenced": true
+            "version": "1.1.2"
           },
           "AutoMapper": {
             "target": "Package",

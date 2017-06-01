@@ -35,6 +35,7 @@ namespace MimeoOAWeb
         {
             // Add framework services.
             services.AddMvc();
+            var basePath = PlatformServices.Default.Application.ApplicationBasePath;
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
@@ -46,10 +47,7 @@ namespace MimeoOAWeb
                 });
                 //MimeoOAWeb
                 //Set the comments path for the swagger json and ui.
-                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
                 var xmlPath = Path.Combine(basePath, "MimeoOAWeb.xml");
-                c.IgnoreObsoleteActions();
-                c.IgnoreObsoleteProperties();
                 c.IncludeXmlComments(xmlPath);
             });
             return services.AddAbp<MimeoOAModule>();
@@ -62,6 +60,7 @@ namespace MimeoOAWeb
             loggerFactory.AddDebug();
             ConfigurationManager.SetConfig(Configuration);
             app.UseMvc();
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mimeo Core Api V1");
