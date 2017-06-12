@@ -3252,12 +3252,6 @@
           "Autofac.Extras.DynamicProxy": "4.2.1",
           "Microsoft.NETCore.App": "1.1.2",
           "Newtonsoft.Json": "10.0.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
         }
       },
       "Abp.AutoMapper/1.0.0": {
@@ -3267,12 +3261,6 @@
           "Abp": "1.0.0",
           "AutoMapper": "6.0.2",
           "Microsoft.NETCore.App": "1.1.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.AutoMapper.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.AutoMapper.dll": {}
         }
       },
       "Abp.EntityFrameworkCore/1.0.0": {
@@ -3283,12 +3271,6 @@
           "Microsoft.AspNetCore": "1.1.2",
           "Microsoft.EntityFrameworkCore": "1.1.2",
           "Microsoft.NETCore.App": "1.1.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.EntityFrameworkCore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.EntityFrameworkCore.dll": {}
         }
       }
     }
@@ -9182,28 +9164,25 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj",
+      "projectUniqueName": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj",
       "projectName": "Abp.DoNetCore",
-      "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj",
-      "outputPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\obj\\",
+      "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj",
+      "outputPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.DoNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
-      "files": {
-        "lib/netcoreapp1.1/Abp.DoNetCore.dll": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\bin\\placeholder\\netcoreapp1.1\\Abp.DoNetCore.dll"
-      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.AutoMapper\\Abp.AutoMapper.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.AutoMapper\\Abp.AutoMapper.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj"
             },
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj"
             },
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.AutoMapper\\Abp.AutoMapper.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.AutoMapper\\Abp.AutoMapper.csproj"
             }
           }
         }
@@ -9214,7 +9193,8 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.2"
+            "version": "1.1.2",
+            "autoReferenced": true
           }
         }
       }

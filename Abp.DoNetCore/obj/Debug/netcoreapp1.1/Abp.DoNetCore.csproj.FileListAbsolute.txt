@@ -11,3 +11,16 @@ F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\ne
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.pdb
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.DoNetCore.deps.json
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.DoNetCore.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.DoNetCore.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.AutoMapper.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\bin\Debug\netcoreapp1.1\Abp.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.csprojResolveAssemblyReference.cache
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.AssemblyInfo.cs
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.DoNetCore\obj\Debug\netcoreapp1.1\Abp.DoNetCore.pdb
