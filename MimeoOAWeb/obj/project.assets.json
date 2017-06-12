@@ -4160,12 +4160,6 @@
           "Autofac.Extras.DynamicProxy": "4.2.1",
           "Microsoft.NETCore.App": "1.1.2",
           "Newtonsoft.Json": "10.0.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.dll": {}
         }
       },
       "Abp.AutoMapper/1.0.0": {
@@ -4175,12 +4169,6 @@
           "Abp": "1.0.0",
           "AutoMapper": "6.0.2",
           "Microsoft.NETCore.App": "1.1.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.AutoMapper.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.AutoMapper.dll": {}
         }
       },
       "Abp.DoNetCore/1.0.0": {
@@ -4191,12 +4179,6 @@
           "Abp.AutoMapper": "1.0.0",
           "Abp.EntityFrameworkCore": "1.0.0",
           "Microsoft.NETCore.App": "1.1.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.DoNetCore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.DoNetCore.dll": {}
         }
       },
       "Abp.EntityFrameworkCore/1.0.0": {
@@ -4207,12 +4189,6 @@
           "Microsoft.AspNetCore": "1.1.2",
           "Microsoft.EntityFrameworkCore": "1.1.2",
           "Microsoft.NETCore.App": "1.1.2"
-        },
-        "compile": {
-          "bin/placeholder/netcoreapp1.1/Abp.EntityFrameworkCore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/netcoreapp1.1/Abp.EntityFrameworkCore.dll": {}
         }
       }
     }
@@ -10901,28 +10877,25 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\MimeoOAWeb\\MimeoOAWeb.csproj",
+      "projectUniqueName": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\MimeoOAWeb\\MimeoOAWeb.csproj",
       "projectName": "MimeoOAWeb",
-      "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\MimeoOAWeb\\MimeoOAWeb.csproj",
-      "outputPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\MimeoOAWeb\\obj\\",
+      "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\MimeoOAWeb\\MimeoOAWeb.csproj",
+      "outputPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\MimeoOAWeb\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
-      "files": {
-        "lib/netcoreapp1.1/MimeoOAWeb.dll": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\MimeoOAWeb\\bin\\placeholder\\netcoreapp1.1\\MimeoOAWeb.dll"
-      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.DoNetCore\\Abp.DoNetCore.csproj"
             },
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj"
             },
-            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj": {
-              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj"
+            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj": {
+              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj"
             }
           }
         }
@@ -10931,25 +10904,13 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
+          "MySql.Data.EntityFrameworkCore": {
             "target": "Package",
-            "version": "1.1.2"
-          },
-          "Autofac": {
-            "target": "Package",
-            "version": "4.6.0"
-          },
-          "Microsoft.ApplicationInsights.AspNetCore": {
-            "target": "Package",
-            "version": "2.0.0"
+            "version": "7.0.7-m61"
           },
           "Microsoft.AspNetCore": {
             "target": "Package",
             "version": "1.1.2"
-          },
-          "Microsoft.AspNetCore.Mvc": {
-            "target": "Package",
-            "version": "1.1.3"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -10959,13 +10920,26 @@
             "target": "Package",
             "version": "1.1.2"
           },
-          "MySql.Data.EntityFrameworkCore": {
+          "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "7.0.7-m61"
+            "version": "1.1.2",
+            "autoReferenced": true
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "1.0.0"
+          },
+          "Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "1.1.3"
+          },
+          "Microsoft.ApplicationInsights.AspNetCore": {
+            "target": "Package",
+            "version": "2.0.0"
+          },
+          "Autofac": {
+            "target": "Package",
+            "version": "4.6.0"
           }
         }
       }

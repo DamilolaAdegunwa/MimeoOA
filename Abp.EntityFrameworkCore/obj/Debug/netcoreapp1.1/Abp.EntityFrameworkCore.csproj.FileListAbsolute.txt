@@ -7,3 +7,12 @@ F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.EntityFrameworkCore\ob
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.AssemblyInfo.cs
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.dll
 F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.deps.json
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\bin\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\bin\Debug\netcoreapp1.1\Abp.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\bin\Debug\netcoreapp1.1\Abp.pdb
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.csprojResolveAssemblyReference.cache
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.AssemblyInfo.cs
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.dll
+G:\pari-WorkFiles\MyProject\OA\MimeoOA\Abp.EntityFrameworkCore\obj\Debug\netcoreapp1.1\Abp.EntityFrameworkCore.pdb

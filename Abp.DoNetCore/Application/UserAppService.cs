@@ -8,6 +8,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Abp.DoNetCore.Application
 {
@@ -33,6 +34,17 @@ namespace Abp.DoNetCore.Application
         {
             var temp = Mapper.Map<UserCreateInput, User>(input);
             //this.userRepository.Insert(new User { AccountCode = "test123", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", CreateTime = DateTime.UtcNow, LastLoginIP = "127.0.0.1", LastLoginTime = DateTime.UtcNow, Password = "123456", Status = "Active" });
+        }
+
+        public async Task<bool> UPdateUser(UserCreateInput input)
+        {
+            var userEntity = Mapper.Map<UserCreateInput, User>(input);
+            var result = await this.userRepository.UpdateAsync(userEntity);
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
