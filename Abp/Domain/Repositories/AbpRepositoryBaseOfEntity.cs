@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Abp.Domain.Repositories
 {
-  public abstract  class AbpRepositoryBaseOfEntity<TEntity>:IRepository<TEntity> where TEntity:class,IEntity<int>
+  public abstract  class AbpRepositoryBaseOfEntity<TEntity>:IRepository<TEntity> where TEntity:class,IEntity<Guid>
     {
         public abstract IQueryable<TEntity> GetAll();
 
@@ -42,7 +42,7 @@ namespace Abp.Domain.Repositories
             return queryMethod(GetAll());
         }
 
-        public virtual TEntity Get(int id)
+        public virtual TEntity Get(Guid id)
         {
             var entity = FirstOrDefault(id);
             if (entity == null)
@@ -53,7 +53,7 @@ namespace Abp.Domain.Repositories
             return entity;
         }
 
-        public virtual async Task<TEntity> GetAsync(int id)
+        public virtual async Task<TEntity> GetAsync(Guid id)
         {
             var entity = await FirstOrDefaultAsync(id);
             if (entity == null)
@@ -74,12 +74,12 @@ namespace Abp.Domain.Repositories
             return Task.FromResult(Single(predicate));
         }
 
-        public virtual TEntity FirstOrDefault(int id)
+        public virtual TEntity FirstOrDefault(Guid id)
         {
             return GetAll().FirstOrDefault(item => item.Id.Equals(id));
         }
 
-        public virtual Task<TEntity> FirstOrDefaultAsync(int id)
+        public virtual Task<TEntity> FirstOrDefaultAsync(Guid id)
         {
             return Task.FromResult(FirstOrDefault(id));
         }
@@ -94,7 +94,7 @@ namespace Abp.Domain.Repositories
             return Task.FromResult(FirstOrDefault(predicate));
         }
 
-        public virtual TEntity Load(int id)
+        public virtual TEntity Load(Guid id)
         {
             return Get(id);
         }
@@ -106,12 +106,12 @@ namespace Abp.Domain.Repositories
             return Task.FromResult(Insert(entity));
         }
 
-        public virtual int InsertAndGetId(TEntity entity)
+        public virtual Guid InsertAndGetId(TEntity entity)
         {
             return Insert(entity).Id;
         }
 
-        public virtual Task<int> InsertAndGetIdAsync(TEntity entity)
+        public virtual Task<Guid> InsertAndGetIdAsync(TEntity entity)
         {
             return Task.FromResult(InsertAndGetId(entity));
         }
@@ -130,12 +130,12 @@ namespace Abp.Domain.Repositories
                 : await UpdateAsync(entity);
         }
 
-        public virtual int InsertOrUpdateAndGetId(TEntity entity)
+        public virtual Guid InsertOrUpdateAndGetId(TEntity entity)
         {
             return InsertOrUpdate(entity).Id;
         }
 
-        public virtual Task<int> InsertOrUpdateAndGetIdAsync(TEntity entity)
+        public virtual Task<Guid> InsertOrUpdateAndGetIdAsync(TEntity entity)
         {
             return Task.FromResult(InsertOrUpdateAndGetId(entity));
         }
@@ -147,14 +147,14 @@ namespace Abp.Domain.Repositories
             return Task.FromResult(Update(entity));
         }
 
-        public virtual TEntity Update(int id, Action<TEntity> updateAction)
+        public virtual TEntity Update(Guid id, Action<TEntity> updateAction)
         {
             var entity = Get(id);
             updateAction(entity);
             return entity;
         }
 
-        public virtual async Task<TEntity> UpdateAsync(int id, Func<TEntity, Task> updateAction)
+        public virtual async Task<TEntity> UpdateAsync(Guid id, Func<TEntity, Task> updateAction)
         {
             var entity = await GetAsync(id);
             await updateAction(entity);
@@ -169,9 +169,9 @@ namespace Abp.Domain.Repositories
             return Task.FromResult(0);
         }
 
-        public abstract void Delete(int id);
+        public abstract void Delete(Guid id);
 
-        public virtual Task DeleteAsync(int id)
+        public virtual Task DeleteAsync(Guid id)
         {
             Delete(id);
             return Task.FromResult(0);

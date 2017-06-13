@@ -26,7 +26,15 @@ namespace Abp.Domain.Uow
                 {
                     invocation.Proceed();
                     return;
-
+                }
+            }
+            else
+            {
+                //If the current method have been set the IsDisable=true, we should skip the unit of work model;
+                if (unitOfWorkAttr.IsDisabled)
+                {
+                    invocation.Proceed();
+                    return;
                 }
             }
             PerformUow(invocation, unitOfWorkAttr.CreateOptions());

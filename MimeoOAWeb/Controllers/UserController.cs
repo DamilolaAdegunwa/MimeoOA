@@ -1,6 +1,8 @@
-﻿using Abp.DoNetCore.Application;
+﻿using Abp.DoNetCore;
+using Abp.DoNetCore.Application;
 using Abp.DoNetCore.Application.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +11,44 @@ using System.Threading.Tasks;
 namespace MimeoOAWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserAppService userAppService;
         public UserController(IUserAppService userAppService)
         {
             this.userAppService = userAppService;
+            var request = this.Request;
         }
 
-
-        [HttpGet("{id}")]
-        public bool CreateUser()
+        [HttpPost("createUser")]
+        public async Task<IActionResult> CreateUser([FromBody] UserInput userInput)
         {
-            this.userAppService.CreateUser(new Abp.DoNetCore.Application.Dtos.UserCreateInput { AccountCode = "test", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", Password = "test" });
-            return false;
+            return Ok(await this.userAppService.CreateUserAsync(userInput));
+
         }
         [HttpPost("updateUser")]
-        public async Task<JsonResult> UpdateUser(UserCreateInput userInput)
+        public async Task<IActionResult> UpdateUser([FromBody] UserInput userInput)
         {
-            return new JsonResult(await this.userAppService.UPdateUser(userInput));
+            return Ok(await this.userAppService.UpdateUserAsync(userInput));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveUser(Guid id)
+        {
+            return Ok(await this.userAppService.RemoveUserAsync(id));
+        }
+
+        [HttpGet("getUser/{id}")]
+        public async Task<IActionResult> GetUserById(Guid id)
+        {
+            return Ok(await this.userAppService.GetUserById(id));
+        }
+
+        [HttpGet("getUsers/{pageIndex}/{pageSize}")]
+        public async Task<IActionResult> GetUsers(int pageIndex, int pageSize)
+        {
+            return Ok(await this.userAppService.GetUsers(pageIndex, pageSize));
+        }
+
     }
 }

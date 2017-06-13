@@ -3,7 +3,6 @@ using Abp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MimeoOAWeb.Core.Infrastructure;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +28,14 @@ namespace MimeoOAWeb.Core.MimeoDBContext
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(mimeoConfiguration.ConnectionString);
+            optionsBuilder.UseMySql(mimeoConfiguration.ConnectionString);
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           //modelBuilder.Entity<User>().Property(p=>p.Id).has
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

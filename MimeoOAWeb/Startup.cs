@@ -13,6 +13,7 @@ using MimeoOAWeb.Core.Infrastructure;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using NLog.Extensions.Logging;
 
 namespace MimeoOAWeb
 {
@@ -56,8 +57,10 @@ namespace MimeoOAWeb
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug();
+            loggerFactory.AddNLog();
+            //loggerFactory.AddNLogWeb();
             ConfigurationManager.SetConfig(Configuration);
             app.UseMvc();
             app.UseSwagger();

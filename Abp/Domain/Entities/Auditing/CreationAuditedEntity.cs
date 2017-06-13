@@ -8,7 +8,7 @@ namespace Abp.Domain.Entities.Auditing
     /// A shortcut of <see cref="CreationAuditedEntity{TPrimaryKey}"/> for most used primary key type (<see cref="Guid"/>).
     /// </summary>
     [Serializable]
-    public abstract class CreationAuditedEntity : CreationAuditedEntity<int>, IEntity
+    public abstract class CreationAuditedEntity : CreationAuditedEntity<Guid>, IEntity
     {
 
     }

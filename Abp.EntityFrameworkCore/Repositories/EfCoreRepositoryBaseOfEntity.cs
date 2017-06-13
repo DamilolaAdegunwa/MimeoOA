@@ -9,38 +9,38 @@ using System.Threading.Tasks;
 
 namespace Abp.EntityFrameworkCore.Repositories
 {
-    public class EfCoreRepositoryBaseOfEntity<TEntity> : AbpRepositoryBaseOfEntity<TEntity>, IRepository<TEntity>
-        where TEntity : class, IEntity<int>
+    public class EfCoreRepositoryBaseOfEntity<EFEntity> : AbpRepositoryBaseOfEntity<EFEntity>, IRepository<EFEntity>
+        where EFEntity : class, IEntity<Guid>
     {
         public virtual DbContext Context { get { return _dbContextProvider.Resolve(); } }
-        public virtual DbSet<TEntity> Table { get { return Context.Set<TEntity>(); } }
+        public virtual DbSet<EFEntity> Table { get { return Context.Set<EFEntity>(); } }
         private readonly IDbContextResolver _dbContextProvider;
         public EfCoreRepositoryBaseOfEntity(IDbContextResolver dbContextProvider)
         {
             _dbContextProvider = dbContextProvider;
         }
 
-        public override IQueryable<TEntity> GetAll()
+        public override IQueryable<EFEntity> GetAll()
         {
-            return Table.Where(item => item.Id > 0);
+            return Table;
         }
 
-        public override TEntity Insert(TEntity entity)
+        public override EFEntity Insert(EFEntity entity)
         {
             return Table.Add(entity).Entity;
         }
 
-        public override TEntity Update(TEntity entity)
+        public override EFEntity Update(EFEntity entity)
         {
             return Table.Update(entity).Entity;
         }
 
-        public override void Delete(TEntity entity)
+        public override void Delete(EFEntity entity)
         {
             Table.Remove(entity);
         }
 
-        public override void Delete(int id)
+        public override void Delete(Guid id)
         {
             var removeEntity = Get(id);
             if (removeEntity != null)

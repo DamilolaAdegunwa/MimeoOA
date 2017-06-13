@@ -4,7 +4,6 @@ using Autofac;
 using Microsoft.EntityFrameworkCore;
 using MimeoOAWeb.Core.Extensions;
 using MimeoOAWeb.Core.MimeoDBContext;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 using System;
 
 namespace MimeoOAWeb.Core.Module

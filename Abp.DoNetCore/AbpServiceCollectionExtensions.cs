@@ -1,4 +1,5 @@
 ﻿using Abp.Dependency;
+using Abp.DoNetCore.Filters;
 using Abp.Modules;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,8 @@ namespace Abp.DoNetCore
 
         public static IServiceProvider AddAbp<TSartModule>(this IServiceCollection service) where TSartModule:AbpModule
         {
+            //Add the DotNet Core MVC filters
+            service.AddScoped<ExceptionFilter>();
             var abpBootstrapper = AddAbpBootstrapper<TSartModule>(service, IocManager.Instance);
             abpBootstrapper.IocManager.Builder.Populate(service);
             abpBootstrapper.IocManager.BuildComponent();

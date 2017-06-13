@@ -8,8 +8,14 @@ namespace Abp.DoNetCore.Application
 {
     public interface IUserAppService
     {
-        void CreateUser(UserCreateInput input);
+        Task<bool> CreateUserAsync(UserInput input);
 
-      Task<bool> UPdateUser(UserCreateInput input);
+        Task<bool> UpdateUserAsync(UserInput input);
+
+        Task<UserInput> RemoveUserAsync(Guid id);
+
+        Task<UserInput> GetUserById(Guid id);
+
+        Task<IEnumerable<UserInput>> GetUsers(int pageIndex,int pageSize);
     }
 }

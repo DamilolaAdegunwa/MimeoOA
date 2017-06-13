@@ -7,6 +7,7 @@ using Abp.DoNetCore.Domain;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,21 +31,60 @@ namespace Abp.DoNetCore.Application
             this.rolePermissionRepository = rolePermissionRepository;
             this.permissionRepository = permissionRepository;
         }
-        public void CreateUser(UserCreateInput input)
+        public async Task<bool> CreateUserAsync(UserInput input)
         {
-            var temp = Mapper.Map<UserCreateInput, User>(input);
-            //this.userRepository.Insert(new User { AccountCode = "test123", AccountEmail = "test@mimeo.com", AccountPhone = "12345678", CreateTime = DateTime.UtcNow, LastLoginIP = "127.0.0.1", LastLoginTime = DateTime.UtcNow, Password = "123456", Status = "Active" });
-        }
-
-        public async Task<bool> UPdateUser(UserCreateInput input)
-        {
-            var userEntity = Mapper.Map<UserCreateInput, User>(input);
-            var result = await this.userRepository.UpdateAsync(userEntity);
+            var userEntities = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail);
+            if (userEntities.Count > 0)
+            {
+                throw new ArgumentException($"The user {input.AccountEmail} have been exist");
+            }
+            var userEntity = Mapper.Map<UserInput, User>(input);
+            userEntity.Id = Guid.NewGuid();
+            userEntity.LastLoginIP = "127.0.0.1";
+            userEntity.CreateTime = DateTime.UtcNow;
+            userEntity.LastLoginTime = DateTime.UtcNow;
+            var result = await this.userRepository.InsertAsync(userEntity);
             if (result != null)
             {
                 return true;
             }
             return false;
+        }
+        public async Task<bool> UpdateUserAsync(UserInput input)
+        {
+            var userEntitie = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail);
+            if (userEntitie.Count <= 0)
+            {
+                return false;
+            }
+            var result = await this.userRepository.UpdateAsync(userEntitie.FirstOrDefault());
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<UserInput> RemoveUserAsync(Guid id)
+        {
+            var result = await this.userRepository.UpdateAsync(id, item => { item.IsDeleted = true; return userRepository.UpdateAsync(item); });
+
+            return Mapper.Map<User, UserInput>(result);
+        }
+
+        [UnitOfWork(IsDisabled = true)]
+        public async Task<UserInput> GetUserById(Guid id)
+        {
+            return Mapper.Map<User, UserInput>(await this.userRepository.GetAsync(id));
+        }
+
+        [UnitOfWork(IsDisabled = true)]
+        public async Task<IEnumerable<UserInput>> GetUsers(int pageIndex, int pageSize)
+        {
+            var users = this.userRepository.GetAll().Take(pageIndex * pageSize).Skip(pageSize * (pageIndex - 1)).ToList();
+            List<UserInput> userInputs = new List<UserInput>();
+            users.ForEach(item => userInputs.Add(Mapper.Map<User, UserInput>(item)));
+            return userInputs;
         }
     }
 }
