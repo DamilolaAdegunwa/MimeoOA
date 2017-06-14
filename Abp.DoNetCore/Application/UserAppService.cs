@@ -4,6 +4,7 @@ using Abp.Domain.Services;
 using Abp.Domain.Uow;
 using Abp.DoNetCore.Application.Dtos;
 using Abp.DoNetCore.Domain;
+using Abp.Utilities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,7 @@ namespace Abp.DoNetCore.Application
             userEntity.LastLoginIP = "127.0.0.1";
             userEntity.CreateTime = DateTime.UtcNow;
             userEntity.LastLoginTime = DateTime.UtcNow;
+            userEntity.Password = HashUtility.CreateHash(input.Password);
             var result = await this.userRepository.InsertAsync(userEntity);
             if (result != null)
             {
@@ -85,6 +87,26 @@ namespace Abp.DoNetCore.Application
             List<UserInput> userInputs = new List<UserInput>();
             users.ForEach(item => userInputs.Add(Mapper.Map<User, UserInput>(item)));
             return userInputs;
+        }
+        /// <summary>
+        /// It should be returned this current user entity
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<bool> AuthorizationOfUser(UserInput input)
+        {
+            var users = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail || item.AccountCode == input.AccountCode || item.AccountPhone == input.AccountPhone);
+            if (users.Count > 0)
+            {
+                //validate the password
+                var password = users.FirstOrDefault().Password;
+                var checkResult = HashUtility.ValidatePassword(input.Password, password);
+                if (checkResult)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

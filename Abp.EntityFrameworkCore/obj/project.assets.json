@@ -133,6 +133,31 @@
           "NETStandard.Library": "1.6.1"
         }
       },
+      "Microsoft.AspNetCore.Cryptography.Internal/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "1.1.2",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Diagnostics/1.1.2": {
         "type": "package",
         "dependencies": {
@@ -530,7 +555,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore/1.1.2": {
+      "Microsoft.EntityFrameworkCore/1.1.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Caching.Memory": "1.1.1",
@@ -548,6 +573,35 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Relational/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.3.0",
+          "Microsoft.EntityFrameworkCore": "1.1.1",
+          "NETStandard.Library": "1.6.1",
+          "System.Data.Common": "4.3.0",
+          "System.Diagnostics.DiagnosticSource": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Relational.Design/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.1.1": {
@@ -1018,6 +1072,23 @@
           }
         }
       },
+      "MySqlConnector/0.19.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Buffers": "4.3.0",
+          "System.Data.Common": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/MySqlConnector.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/MySqlConnector.dll": {}
+        }
+      },
       "NETStandard.Library/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -1082,6 +1153,52 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "1.1.1",
+          "MySqlConnector": "0.19.2",
+          "NETStandard.Library": "1.6.1",
+          "Pomelo.JsonObject": "1.1.1",
+          "System.Threading.Tasks.Extensions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.dll": {}
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql.Design/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.1",
+          "Microsoft.Extensions.DependencyInjection": "1.1.0",
+          "Microsoft.Extensions.Logging.Console": "1.1.1",
+          "MySqlConnector": "0.19.2",
+          "NETStandard.Library": "1.6.1",
+          "Pomelo.EntityFrameworkCore.MySql": "1.1.2"
+        },
+        "compile": {
+          "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.Design.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.Design.dll": {}
+        }
+      },
+      "Pomelo.JsonObject/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Pomelo.JsonObject.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Pomelo.JsonObject.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -1489,6 +1606,25 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Console.dll": {}
+        }
+      },
+      "System.Data.Common/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.2/System.Data.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.2/System.Data.Common.dll": {}
         }
       },
       "System.Diagnostics.Contracts/4.3.0": {
@@ -3221,8 +3357,10 @@
           "Autofac": "4.6.0",
           "Autofac.Extensions.DependencyInjection": "4.1.0",
           "Autofac.Extras.DynamicProxy": "4.2.1",
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.2",
           "Microsoft.NETCore.App": "1.1.2",
-          "Newtonsoft.Json": "10.0.2"
+          "Newtonsoft.Json": "10.0.2",
+          "System.Security.Cryptography.Algorithms": "4.3.0"
         }
       }
     }
@@ -3311,6 +3449,32 @@
       "files": [
         "microsoft.aspnetcore.1.1.2.nupkg.sha512",
         "microsoft.aspnetcore.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.Internal/1.1.2": {
+      "sha512": "DeDm7XO+/QVlxp+tefXbt2Mm10mw3BpUWvN9YVgl1Ykg08nBox95ZQ9EKLt/CpaANFGp//nJqpc93NTMKlwNnQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.internal/1.1.2",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net451/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "microsoft.aspnetcore.cryptography.internal.1.1.2.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.2": {
+      "sha512": "7FHSXY9W6zfwoeJtAxMPQJ8xPsWF9u5lFGWG7VkrTrjw3XEtrgbzVZgJUjEuyxwEW49w9KhhxH2Xxv+4wzvSMQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/1.1.2",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "microsoft.aspnetcore.cryptography.keyderivation.1.1.2.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Diagnostics/1.1.2": {
@@ -3645,17 +3809,43 @@
         "runtimes/win8-arm/native/Microsoft.DiaSymReader.Native.arm.dll"
       ]
     },
-    "Microsoft.EntityFrameworkCore/1.1.2": {
-      "sha512": "2oY1cQ3DEhpbRjlDBE1zb7IngKyPC4fslAX5WL1mnVQOLX/8BPOAjgYM2inzNK2z8ld/DxBUZEwc3xfNc8qhbw==",
+    "Microsoft.EntityFrameworkCore/1.1.1": {
+      "sha512": "9zsRdiFrDMhSYl0miwCjNQ8JQmXVc3zSEz0noEvHIj3s9dF6pmgpfICk9YXhv4algLCfm/uKy2yanlOQ1GImog==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/1.1.2",
+      "path": "microsoft.entityframeworkcore/1.1.1",
       "files": [
         "lib/net451/Microsoft.EntityFrameworkCore.dll",
         "lib/net451/Microsoft.EntityFrameworkCore.xml",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.dll",
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.1.1.2.nupkg.sha512",
+        "microsoft.entityframeworkcore.1.1.1.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Relational/1.1.1": {
+      "sha512": "wW7ObVGwDHJg/GPtM0ivQ2TaXdG8nx9KsaZ9y2lqG7t2LpWEjnqIcFRkv728sqwXhfFLvvCbnQTQI354QML+jQ==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.relational/1.1.1",
+      "files": [
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.xml",
+        "microsoft.entityframeworkcore.relational.1.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Relational.Design/1.1.1": {
+      "sha512": "qgYOHMt09Y/G9sUX21iaM8FZ8wadtNwJ+trRtZ3USiYwfHvxG6XpmHQlcU9jrF+5ZsQ/N78pIpJa4CFGuvJqfw==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.relational.design/1.1.1",
+      "files": [
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml",
+        "microsoft.entityframeworkcore.relational.design.1.1.1.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.design.nuspec"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/1.1.1": {
@@ -4140,6 +4330,17 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll"
       ]
     },
+    "MySqlConnector/0.19.2": {
+      "sha512": "BjF5GJn1oZMr2B0K/q3auTplGmiwJD5o77W+YQ58Egq7OQIyloOxzJkhjm0kbsLYMrU/56pWApnLE/LLDvEFaA==",
+      "type": "package",
+      "path": "mysqlconnector/0.19.2",
+      "files": [
+        "lib/net451/MySqlConnector.dll",
+        "lib/netstandard1.3/MySqlConnector.dll",
+        "mysqlconnector.0.19.2.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
     "NETStandard.Library/1.6.1": {
       "sha512": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "type": "package",
@@ -4176,6 +4377,39 @@
         "newtonsoft.json.10.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.MySql/1.1.2": {
+      "sha512": "F6hPurjiavm6w4xXXnfr78i/2EFAx/ShKrMA7obT2OmKr+tUQQ7+71TYF1hWqZXYZgiDHSiqN5kmuWYkgYwzWg==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.mysql/1.1.2",
+      "files": [
+        "lib/net451/Pomelo.EntityFrameworkCore.MySql.dll",
+        "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.dll",
+        "pomelo.entityframeworkcore.mysql.1.1.2.nupkg.sha512",
+        "pomelo.entityframeworkcore.mysql.nuspec"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.MySql.Design/1.1.2": {
+      "sha512": "Hzq1gPtZ3+1zuNhOAQea8Q7j6iX0FjRwNp5S30+X0jBdATiLEJvlfQi4wuVQDS5Y2ClYICGynNqAJUR3EtgA5g==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.mysql.design/1.1.2",
+      "files": [
+        "lib/net451/Pomelo.EntityFrameworkCore.MySql.Design.dll",
+        "lib/netstandard1.3/Pomelo.EntityFrameworkCore.MySql.Design.dll",
+        "pomelo.entityframeworkcore.mysql.design.1.1.2.nupkg.sha512",
+        "pomelo.entityframeworkcore.mysql.design.nuspec"
+      ]
+    },
+    "Pomelo.JsonObject/1.1.1": {
+      "sha512": "erkYG/OW1LloSwDFGeS9MvVjy1FLmaV3k8GK/GMR8D3sSDEylZogoLdLiaOFc92+zTen92rG6XGiioNacSlg0A==",
+      "type": "package",
+      "path": "pomelo.jsonobject/1.1.1",
+      "files": [
+        "lib/net451/Pomelo.JsonObject.dll",
+        "lib/netstandard1.3/Pomelo.JsonObject.dll",
+        "pomelo.jsonobject.1.1.1.nupkg.sha512",
+        "pomelo.jsonobject.nuspec"
       ]
     },
     "Remotion.Linq/2.1.1": {
@@ -4940,6 +5174,55 @@
         "ref/netstandard1.3/ru/System.Console.xml",
         "ref/netstandard1.3/zh-hans/System.Console.xml",
         "ref/netstandard1.3/zh-hant/System.Console.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.Data.Common/4.3.0": {
+      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
+      "type": "package",
+      "path": "system.data.common/4.3.0",
+      "files": [
+        "System.Data.Common.4.3.0.nupkg.sha512",
+        "System.Data.Common.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.Common.dll",
+        "lib/netstandard1.2/System.Data.Common.dll",
+        "lib/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.xml",
+        "ref/netstandard1.2/de/System.Data.Common.xml",
+        "ref/netstandard1.2/es/System.Data.Common.xml",
+        "ref/netstandard1.2/fr/System.Data.Common.xml",
+        "ref/netstandard1.2/it/System.Data.Common.xml",
+        "ref/netstandard1.2/ja/System.Data.Common.xml",
+        "ref/netstandard1.2/ko/System.Data.Common.xml",
+        "ref/netstandard1.2/ru/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/de/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/es/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/fr/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/it/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ja/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ko/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ru/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hans/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hant/System.Data.Common.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
@@ -9081,8 +9364,9 @@
     ".NETCoreApp,Version=v1.1": [
       "Abp >= 1.0.0",
       "Microsoft.AspNetCore >= 1.1.2",
-      "Microsoft.EntityFrameworkCore >= 1.1.2",
-      "Microsoft.NETCore.App >= 1.1.2"
+      "Microsoft.NETCore.App >= 1.1.2",
+      "Pomelo.EntityFrameworkCore.MySql >= 1.1.2",
+      "Pomelo.EntityFrameworkCore.MySql.Design >= 1.1.2"
     ]
   },
   "packageFolders": {
@@ -9091,10 +9375,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj",
+      "projectUniqueName": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj",
       "projectName": "Abp.EntityFrameworkCore",
-      "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj",
-      "outputPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp.EntityFrameworkCore\\obj\\",
+      "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\Abp.EntityFrameworkCore.csproj",
+      "outputPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp.EntityFrameworkCore\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -9102,8 +9386,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj": {
-              "projectPath": "G:\\pari-WorkFiles\\MyProject\\OA\\MimeoOA\\Abp\\Abp.csproj"
+            "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj": {
+              "projectPath": "F:\\WorkSpaceW10\\MimeoTFS_oxu\\Internal Project\\MimeoOA\\Abp\\Abp.csproj"
             }
           }
         }
@@ -9112,11 +9396,11 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Microsoft.AspNetCore": {
+          "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "1.1.2"
           },
-          "Microsoft.EntityFrameworkCore": {
+          "Microsoft.AspNetCore": {
             "target": "Package",
             "version": "1.1.2"
           },
@@ -9124,6 +9408,10 @@
             "target": "Package",
             "version": "1.1.2",
             "autoReferenced": true
+          },
+          "Pomelo.EntityFrameworkCore.MySql.Design": {
+            "target": "Package",
+            "version": "1.1.2"
           }
         }
       }

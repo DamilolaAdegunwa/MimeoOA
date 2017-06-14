@@ -14,6 +14,5 @@ namespace Abp.DoNetCore.Application.Dtos
         public string AccountCode { get; set; }
         public string AccountPhone { get; set; }
         public string Password { get; set; }
-        public UserActiveStatus Status { get; set; }
     }
 }

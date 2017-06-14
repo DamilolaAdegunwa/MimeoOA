@@ -20,18 +20,23 @@ namespace MimeoOAWeb.Controllers
             var request = this.Request;
         }
 
-        [HttpPost("createUser")]
+        [HttpPost("signUp")]
         public async Task<IActionResult> CreateUser([FromBody] UserInput userInput)
         {
             return Ok(await this.userAppService.CreateUserAsync(userInput));
 
         }
-        [HttpPost("updateUser")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateUser([FromBody] UserInput userInput)
         {
             return Ok(await this.userAppService.UpdateUserAsync(userInput));
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserInput userInput)
+        {
+            return Ok(await this.userAppService.AuthorizationOfUser(userInput));
+        }
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveUser(Guid id)
         {

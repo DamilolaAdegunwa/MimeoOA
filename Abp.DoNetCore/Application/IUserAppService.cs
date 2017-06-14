@@ -17,5 +17,7 @@ namespace Abp.DoNetCore.Application
         Task<UserInput> GetUserById(Guid id);
 
         Task<IEnumerable<UserInput>> GetUsers(int pageIndex,int pageSize);
+
+        Task<bool> AuthorizationOfUser(UserInput input);
     }
 }
