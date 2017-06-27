@@ -32,23 +32,30 @@ namespace Abp.EntityFrameworkCore.Uow
         }
         public override void SaveChanges()
         {
-            foreach (var dbContext in ActiveDbContexts.Values)
-            {
-                SaveChangesInDbContext(dbContext);
-            }
+            //foreach (var dbContext in ActiveDbContexts.Values)
+            //{
+            //    SaveChangesInDbContext(dbContext);
+            //}
+            SaveChangesInDbContext(this.dbContextResolver.Resolve(DBSelector.Master));
         }
 
         public override async Task SaveChangesAsync()
         {
-            foreach (var dbContext in ActiveDbContexts.Values)
-            {
-                await SaveChangesInDbContextAsync(dbContext);
-            }
+            //foreach (var dbContext in ActiveDbContexts.Values)
+            //{
+            //    await SaveChangesInDbContextAsync(dbContext);
+            //}
+
+            await SaveChangesInDbContextAsync(this.dbContextResolver.Resolve(DBSelector.Master));
         }
 
         protected override void BeginUow()
         {
-            GetOrCreateDbcontext<DbContext>();
+            //GetOrCreateDbcontext<DbContext>();
+            if (Options.IsTransactional==true)
+            {
+                BeginTransaction(this.dbContextResolver.Resolve(DBSelector.Master));
+            }
             base.BeginUow();
         }
 
@@ -62,12 +69,12 @@ namespace Abp.EntityFrameworkCore.Uow
             if (!ActiveDbContexts.TryGetValue(dbContextKey, out dbContext))
             {
 
-                dbContext = this.dbContextResolver.Resolve();
+                dbContext = this.dbContextResolver.Resolve(DBSelector.Master);
                 if (Options.IsTransactional == true)
                 {
                     BeginTransaction(dbContext);
                 }
-                ActiveDbContexts[dbContextKey] = dbContext;
+                //ActiveDbContexts[dbContextKey] = dbContext;
             }
             return (TDbContext)dbContext;
         }
@@ -99,10 +106,12 @@ namespace Abp.EntityFrameworkCore.Uow
             {
                 return;
             }
-            foreach (var dbContext in ActiveDbContexts.Values)
-            {
-                dbContext.Database.CommitTransaction();
-            }
+            //foreach (var dbContext in ActiveDbContexts.Values)
+            //{
+            //    dbContext.Database.CommitTransaction();
+            //}
+            var dbContext = this.dbContextResolver.Resolve(DBSelector.Master);
+            dbContext.Database.CommitTransaction();
         }
         protected virtual void SaveChangesInDbContext(DbContext dbContext)
         {

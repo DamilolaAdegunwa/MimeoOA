@@ -3,7 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Abp.EntityFrameworkCore
 {
-    public abstract class AbpDbContext : DbContext
+    public class AbpDbContext : DbContext
     {
+        public DBSelector _dbSelector { get; set; }
+        public AbpDbContext(DbContextOptions options)
+          : base(options)
+        {
+        }
     }
 }

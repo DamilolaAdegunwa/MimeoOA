@@ -88,6 +88,16 @@ namespace Abp.DoNetCore.Application
             users.ForEach(item => userInputs.Add(Mapper.Map<User, UserInput>(item)));
             return userInputs;
         }
+        [UnitOfWork(IsDisabled = true)]
+        private async Task<User> ValidateLoginUser(UserInput input)
+        {
+            var users = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail || item.AccountCode == input.AccountCode || item.AccountPhone == input.AccountPhone);
+            if (users.Count>0)
+            {
+                return users.FirstOrDefault();
+            }
+            return null;
+        }
         /// <summary>
         /// It should be returned this current user entity
         /// </summary>
@@ -95,11 +105,11 @@ namespace Abp.DoNetCore.Application
         /// <returns></returns>
         public async Task<bool> AuthorizationOfUser(UserInput input)
         {
-            var users = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail || item.AccountCode == input.AccountCode || item.AccountPhone == input.AccountPhone);
-            if (users.Count > 0)
+            var haveLoginUser = await ValidateLoginUser(input);
+            if (haveLoginUser!=null)
             {
                 //validate the password
-                var password = users.FirstOrDefault().Password;
+                var password = haveLoginUser.Password;
                 var checkResult = HashUtility.ValidatePassword(input.Password, password);
                 if (checkResult)
                 {

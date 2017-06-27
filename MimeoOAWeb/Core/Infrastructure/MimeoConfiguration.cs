@@ -7,6 +7,8 @@ namespace MimeoOAWeb.Core.Infrastructure
 {
     public class MimeoConfiguration
     {
-        public string ConnectionString { get; set; }
+        public string MasterConnectionString { get; set; }
+
+        public string SalveConnectIonString { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Abp.EntityFrameworkCore
         public override void PreInitialize(ContainerBuilder builder)
         {
             builder.RegisterType<EfCoreUnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
-            builder.RegisterType<DefaultDbContextResolver>().As<IDbContextResolver>().InstancePerLifetimeScope();
         }
         public override void Initialize(ContainerBuilder builder)
         {

@@ -12,9 +12,10 @@ namespace Abp.EntityFrameworkCore.Repositories
     public class EfCoreRepositoryBaseOfEntity<EFEntity> : AbpRepositoryBaseOfEntity<EFEntity>, IRepository<EFEntity>
         where EFEntity : class, IEntity<Guid>
     {
-        public virtual DbContext Context { get { return _dbContextProvider.Resolve(); } }
+        public virtual DbContext Context { get { return _dbContextProvider.Resolve(dbSelector); } }
         public virtual DbSet<EFEntity> Table { get { return Context.Set<EFEntity>(); } }
         private readonly IDbContextResolver _dbContextProvider;
+        private DBSelector dbSelector { get; set; }
         public EfCoreRepositoryBaseOfEntity(IDbContextResolver dbContextProvider)
         {
             _dbContextProvider = dbContextProvider;
@@ -22,6 +23,8 @@ namespace Abp.EntityFrameworkCore.Repositories
 
         public override IQueryable<EFEntity> GetAll()
         {
+            //Must Have the slave database, it should be work for this.
+            //dbSelector = DBSelector.Slave;
             return Table;
         }
 

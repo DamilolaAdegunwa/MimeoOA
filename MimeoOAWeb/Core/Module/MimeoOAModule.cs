@@ -1,6 +1,9 @@
 ﻿using Abp.DoNetCore;
+using Abp.EntityFrameworkCore;
+using Abp.EntityFrameworkCore.Configurations;
 using Abp.Modules;
 using Autofac;
+using Autofac.Core;
 using Microsoft.EntityFrameworkCore;
 using MimeoOAWeb.Core.Extensions;
 using MimeoOAWeb.Core.MimeoDBContext;
@@ -25,7 +28,10 @@ namespace MimeoOAWeb.Core.Module
             //    return optionsBuilder.Options;
             //}).InstancePerLifetimeScope();
 
-            builder.RegisterType<MimeoOAContext>().AsSelf().As<DbContext>().InstancePerLifetimeScope();
+            //builder.RegisterType<MimeoOAContext>().AsSelf().As<DbContext>().InstancePerLifetimeScope();
+            //builder.RegisterType<MimeoOAContext>().AsSelf().As<AbpDbContext>().InstancePerLifetimeScope();
+            builder.RegisterType<DefaultDbContextResolver<MimeoOAContext>>().As<IDbContextResolver>().InstancePerLifetimeScope();
+            builder.RegisterType<AbpDbContextConfigurerAction<MimeoOAContext>>().As<IAbpDbContextConfigurer<MimeoOAContext>>().WithParameter(new NamedParameter("action", new Action<AbpDbContextConfiguration<MimeoOAContext>>(options=> { options.DbContextOptions.UseMySql(options.ConnectionString); })));
         }
     }
 }

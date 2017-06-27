@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Abp.EntityFrameworkCore
 {
-    public interface IDbContextResolver
+    public interface IDbContextResolver:IDisposable
     {
-        DbContext Resolve();
+        DbContext Resolve(DBSelector dbSelector);
     }
 }

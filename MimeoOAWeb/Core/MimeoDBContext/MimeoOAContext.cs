@@ -19,23 +19,29 @@ namespace MimeoOAWeb.Core.MimeoDBContext
         public DbSet<Permission> mo_permission { get; set; }
         public DbSet<RolePermission> mo_role_permission { get; set; }
 
-        private readonly MimeoConfiguration mimeoConfiguration;
-        public MimeoOAContext()
+        //private readonly MimeoConfiguration mimeoConfiguration;
+        public MimeoOAContext(DbContextOptions<MimeoOAContext> options):base(options)
         {
-            mimeoConfiguration = new MimeoConfiguration();
-            ConfigurationManager.GetConfigSection("EntityFrameworkCore:MimeoConfiguration").Bind(mimeoConfiguration);
+            //mimeoConfiguration = new MimeoConfiguration();
+            //ConfigurationManager.GetConfigSection("EntityFrameworkCore:MimeoConfiguration").Bind(mimeoConfiguration);
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql(mimeoConfiguration.ConnectionString);
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (base._dbSelector==Abp.DBSelector.Master)
+        //    {
+        //        optionsBuilder.UseMySql(mimeoConfiguration.MasterConnectionString);
+        //    }
+        //    else
+        //    {
+        //        optionsBuilder.UseMySql(mimeoConfiguration.SalveConnectIonString);
+        //    }
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-           //modelBuilder.Entity<User>().Property(p=>p.Id).has
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }
