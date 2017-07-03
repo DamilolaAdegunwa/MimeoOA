@@ -51,6 +51,14 @@ namespace MimeoOAWeb
                 var xmlPath = Path.Combine(basePath, "MimeoOAWeb.xml");
                 c.IncludeXmlComments(xmlPath);
             });
+            //Set the amount of Master/Slave, and I know this setting is so digusting, but it need to do it for the moment. I will optimize this function as a middleware to implement the logic of Master/Slave
+            services.Configure<Abp.EntityFrameworkCore.EFCoreDataBaseOptions>(options => {
+                MimeoOAConfiguration mimeoConfiguration = new MimeoOAConfiguration();
+                Configuration.GetSection("EntityFrameworkCore:MimeoConfiguration").Bind(mimeoConfiguration);
+                options.DbConnections = new Dictionary<Abp.DBSelector, string>();
+                options.DbConnections.Add(Abp.DBSelector.Master, mimeoConfiguration.MasterConnectionString);
+                options.DbConnections.Add(Abp.DBSelector.Slave, mimeoConfiguration.SalveConnectIonString);
+            });
             return services.AddAbp<MimeoOAModule>();
         }
 
@@ -60,8 +68,6 @@ namespace MimeoOAWeb
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             loggerFactory.AddNLog();
-            //loggerFactory.AddNLogWeb();
-            ConfigurationManager.SetConfig(Configuration);
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

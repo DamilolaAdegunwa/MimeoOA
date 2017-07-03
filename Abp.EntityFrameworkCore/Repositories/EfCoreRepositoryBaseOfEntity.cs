@@ -24,22 +24,25 @@ namespace Abp.EntityFrameworkCore.Repositories
         public override IQueryable<EFEntity> GetAll()
         {
             //Must Have the slave database, it should be work for this.
-            //dbSelector = DBSelector.Slave;
+            dbSelector = DBSelector.Slave;
             return Table;
         }
 
         public override EFEntity Insert(EFEntity entity)
         {
+            dbSelector = DBSelector.Master;
             return Table.Add(entity).Entity;
         }
 
         public override EFEntity Update(EFEntity entity)
         {
+            dbSelector = DBSelector.Master;
             return Table.Update(entity).Entity;
         }
 
         public override void Delete(EFEntity entity)
         {
+            dbSelector = DBSelector.Master;
             Table.Remove(entity);
         }
 

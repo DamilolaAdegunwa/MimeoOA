@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MimeoOAWeb.Core.Infrastructure
 {
-    public class MimeoConfiguration
+    public class MimeoOAConfiguration
     {
         public string MasterConnectionString { get; set; }
 
