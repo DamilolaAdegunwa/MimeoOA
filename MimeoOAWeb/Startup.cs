@@ -59,6 +59,16 @@ namespace MimeoOAWeb
                 options.DbConnections.Add(Abp.DBSelector.Master, mimeoConfiguration.MasterConnectionString);
                 options.DbConnections.Add(Abp.DBSelector.Slave, mimeoConfiguration.SalveConnectIonString);
             });
+
+            //Set the Redis Cache Configuration
+            services.Configure<Abp.RedisCache.AbpRedisCacheOptions>(options=> {
+                Abp.RedisCache.AbpRedisCacheConfiguration redisCacheConfiguration = new Abp.RedisCache.AbpRedisCacheConfiguration();
+                Configuration.GetSection("RedisCacheSection:Connections").Bind(redisCacheConfiguration);
+                options.DbConnections = new Dictionary<Abp.DBSelector, string>();
+                options.DbConnections.Add(Abp.DBSelector.Master, redisCacheConfiguration.MasterConnection);
+                options.DbConnections.Add(Abp.DBSelector.Slave, redisCacheConfiguration.SlaveConnection);
+                options.DatabaseId = redisCacheConfiguration.DataBaseId;
+            });
             return services.AddAbp<MimeoOAModule>();
         }
 
