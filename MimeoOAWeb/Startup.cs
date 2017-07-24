@@ -14,6 +14,11 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using NLog.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using Abp.DoNetCore.Handlers;
+using Abp.DoNetCore.Common;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace MimeoOAWeb
 {
@@ -35,7 +40,14 @@ namespace MimeoOAWeb
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddOptions();
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                           .RequireAuthenticatedUser()
+                           .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             var basePath = PlatformServices.Default.Application.ApplicationBasePath;
             services.AddSwaggerGen(c =>
             {
@@ -69,21 +81,21 @@ namespace MimeoOAWeb
                 options.DbConnections.Add(Abp.DBSelector.Slave, redisCacheConfiguration.SlaveConnection);
                 options.DatabaseId = redisCacheConfiguration.DataBaseId;
             });
-            return services.AddAbp<MimeoOAModule>();
+            return services.AddAbp<MimeoOAModule>(Configuration);
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             loggerFactory.AddNLog();
-            app.UseMvc();
+            app.UserAbp(Configuration);
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mimeo Core Api V1");
-            });
+            }); 
+            app.UseMvc();
         }
     }
 }

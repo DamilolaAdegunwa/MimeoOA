@@ -1,6 +1,7 @@
 ﻿using Abp.DoNetCore;
 using Abp.DoNetCore.Application;
 using Abp.DoNetCore.Application.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,19 +22,19 @@ namespace MimeoOAWeb.Controllers
         }
 
         [HttpPost("signUp")]
-        public async Task<IActionResult> CreateUser([FromBody] UserInput userInput)
+        public async Task<IActionResult> CreateUser([FromBody] ApplicationUser userInput)
         {
             return Ok(await this.userAppService.CreateUserAsync(userInput));
 
         }
         [HttpPut("update")]
-        public async Task<IActionResult> UpdateUser([FromBody] UserInput userInput)
+        public async Task<IActionResult> UpdateUser([FromBody] ApplicationUser userInput)
         {
             return Ok(await this.userAppService.UpdateUserAsync(userInput));
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserInput userInput)
+        public async Task<IActionResult> Login([FromBody] ApplicationUser userInput)
         {
             return Ok(await this.userAppService.AuthorizationOfUser(userInput));
         }
@@ -44,6 +45,7 @@ namespace MimeoOAWeb.Controllers
         }
 
         [HttpGet("getUser/{id}")]
+        [Authorize(Policy = "MimeoOA")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             return Ok(await this.userAppService.GetUserById(id));

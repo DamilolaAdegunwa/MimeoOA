@@ -21,6 +21,11 @@ namespace Abp.Json
             return SerializeWithType(obj, obj.GetType());
         }
 
+        public static string Seialize(object obj)
+        {
+            return JsonConvert.SerializeObject(obj,Formatting.Indented);
+        }
+
         /// <summary>
         /// Serializes an object with a type information included.
         /// So, it can be deserialized using <see cref="DeserializeWithType"/> method later.

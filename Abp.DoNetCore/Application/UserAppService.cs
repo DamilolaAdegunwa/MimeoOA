@@ -32,14 +32,14 @@ namespace Abp.DoNetCore.Application
             this.rolePermissionRepository = rolePermissionRepository;
             this.permissionRepository = permissionRepository;
         }
-        public async Task<bool> CreateUserAsync(UserInput input)
+        public async Task<bool> CreateUserAsync(ApplicationUser input)
         {
             var userEntities = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail);
             if (userEntities.Count > 0)
             {
                 throw new ArgumentException($"The user {input.AccountEmail} have been exist");
             }
-            var userEntity = Mapper.Map<UserInput, User>(input);
+            var userEntity = Mapper.Map<ApplicationUser, User>(input);
             userEntity.Id = Guid.NewGuid();
             userEntity.LastLoginIP = "127.0.0.1";
             userEntity.CreateTime = DateTime.UtcNow;
@@ -52,7 +52,7 @@ namespace Abp.DoNetCore.Application
             }
             return false;
         }
-        public async Task<bool> UpdateUserAsync(UserInput input)
+        public async Task<bool> UpdateUserAsync(ApplicationUser input)
         {
             var userEntitie = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail);
             if (userEntitie.Count <= 0)
@@ -67,29 +67,29 @@ namespace Abp.DoNetCore.Application
             return false;
         }
 
-        public async Task<UserInput> RemoveUserAsync(Guid id)
+        public async Task<ApplicationUser> RemoveUserAsync(Guid id)
         {
             var result = await this.userRepository.UpdateAsync(id, item => { item.IsDeleted = true; return userRepository.UpdateAsync(item); });
 
-            return Mapper.Map<User, UserInput>(result);
+            return Mapper.Map<User, ApplicationUser>(result);
         }
 
         [UnitOfWork(IsDisabled = true)]
-        public async Task<UserInput> GetUserById(Guid id)
+        public async Task<ApplicationUser> GetUserById(Guid id)
         {
-            return Mapper.Map<User, UserInput>(await this.userRepository.GetAsync(id));
+            return Mapper.Map<User, ApplicationUser>(await this.userRepository.GetAsync(id));
         }
 
         [UnitOfWork(IsDisabled = true)]
-        public async Task<IEnumerable<UserInput>> GetUsers(int pageIndex, int pageSize)
+        public async Task<IEnumerable<ApplicationUser>> GetUsers(int pageIndex, int pageSize)
         {
             var users = this.userRepository.GetAll().Take(pageIndex * pageSize).Skip(pageSize * (pageIndex - 1)).ToList();
-            List<UserInput> userInputs = new List<UserInput>();
-            users.ForEach(item => userInputs.Add(Mapper.Map<User, UserInput>(item)));
+            List<ApplicationUser> userInputs = new List<ApplicationUser>();
+            users.ForEach(item => userInputs.Add(Mapper.Map<User, ApplicationUser>(item)));
             return userInputs;
         }
         [UnitOfWork(IsDisabled = true)]
-        private async Task<User> ValidateLoginUser(UserInput input)
+        private async Task<User> ValidateLoginUser(ApplicationUser input)
         {
             var users = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail || item.AccountCode == input.AccountCode || item.AccountPhone == input.AccountPhone);
             if (users.Count>0)
@@ -103,7 +103,7 @@ namespace Abp.DoNetCore.Application
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<bool> AuthorizationOfUser(UserInput input)
+        public async Task<bool> AuthorizationOfUser(ApplicationUser input)
         {
             var haveLoginUser = await ValidateLoginUser(input);
             if (haveLoginUser!=null)

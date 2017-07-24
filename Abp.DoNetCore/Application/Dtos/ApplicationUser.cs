@@ -8,7 +8,7 @@ using System.Text;
 namespace Abp.DoNetCore.Application.Dtos
 {
     [AutoMap(typeof(User))]
-    public class UserInput
+    public class ApplicationUser
     {
         public string AccountEmail { get; set; }
         public string AccountCode { get; set; }

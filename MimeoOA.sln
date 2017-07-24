@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimeoOAWeb", "MimeoOAWeb\Mi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AutoMapper", "Abp.AutoMapper\Abp.AutoMapper.csproj", "{F3B632FA-2965-42F3-B3BB-FBD704996D2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.RedisCache", "Abp.RedisCache\Abp.RedisCache.csproj", "{752360B0-956D-4DA3-B114-529482660418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.RedisCache", "Abp.RedisCache\Abp.RedisCache.csproj", "{752360B0-956D-4DA3-B114-529482660418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

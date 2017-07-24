@@ -14,8 +14,8 @@ namespace Abp.DoNetCore
     {
         public override void Initialize(ContainerBuilder builder)
         {
-            //builder.RegisterType<UserAppService>().As<IUserAppService>().InstancePerLifetimeScope();
             Register<IUserAppService, UserAppService>(builder, Dependency.DependencyLifeStyle.Transient);
+            Register<IAbpAuthorizationService, AbpAuthorizationService>(builder, Dependency.DependencyLifeStyle.Transient);
         }
     }
 }
