@@ -1,15 +1,13 @@
-﻿using Abp.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Autofac;
+﻿using Abp.AutoMapper;
 using Abp.DoNetCore.Application;
 using Abp.EntityFrameworkCore;
-using Abp.AutoMapper;
+using Abp.Modules;
+using Abp.RedisCache;
+using Autofac;
 
 namespace Abp.DoNetCore
 {
-    [DependsOn(typeof(AbpEntityFrameworkCoreModule), typeof(AbpAutoMapperModule))]
+    [DependsOn(typeof(AbpEntityFrameworkCoreModule), typeof(AbpAutoMapperModule),typeof(AbpRedisCacheModule))]
     public class AbpDoNetCoreModule : AbpModule
     {
         public override void Initialize(ContainerBuilder builder)

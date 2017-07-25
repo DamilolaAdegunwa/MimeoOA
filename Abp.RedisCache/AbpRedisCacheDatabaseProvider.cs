@@ -13,7 +13,7 @@ namespace Abp.RedisCache
         public AbpRedisCacheDatabaseProvider(IOptions<AbpRedisCacheOptions> redisCacheOptions)
         {
             _options = redisCacheOptions;
-            _connectionMultiplexer = new Lazy<ConnectionMultiplexer>();
+            _connectionMultiplexer = new Lazy<ConnectionMultiplexer>(CreateConnectionMultiplexer);
         }
 
         public void Dispose()

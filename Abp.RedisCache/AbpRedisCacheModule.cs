@@ -17,8 +17,8 @@ namespace Abp.RedisCache
             builder.RegisterType<AbpRedisCache>().As<ICache>().WithParameters(new Parameter[] {
 
                 new NamedParameter("name","RedisCache"),
-                new ResolvedParameter((pi,ctx)=>pi.Name=="redisCacheDatabaseProvider",(pi,ctx)=>ctx.ResolveNamed<IRedisCacheSerializer>("redisCacheDabaseProvider")),
-                 new ResolvedParameter((pi,ctx)=>pi.Name=="serialiazer",(pi,ctx)=>ctx.ResolveNamed<IAbpRedisCacheDatabaseProvider>("redisCacheDabaseProvider")),
+                new ResolvedParameter((pi,ctx)=>pi.Name=="redisCacheDatabaseProvider",(pi,ctx)=>ctx.ResolveNamed<IAbpRedisCacheDatabaseProvider>("redisCacheDabaseProvider")),
+                 new ResolvedParameter((pi,ctx)=>pi.Name=="serialiazer",(pi,ctx)=>ctx.ResolveNamed<IRedisCacheSerializer>("redisCacheSerializer")),
             }).InstancePerLifetimeScope();
         }
     }

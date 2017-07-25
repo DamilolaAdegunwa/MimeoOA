@@ -4,6 +4,7 @@ using Abp.Domain.Services;
 using Abp.Domain.Uow;
 using Abp.DoNetCore.Application.Dtos;
 using Abp.DoNetCore.Domain;
+using Abp.Runtime.Caching;
 using Abp.Utilities;
 using AutoMapper;
 using System;
@@ -22,8 +23,8 @@ namespace Abp.DoNetCore.Application
         private readonly IRepository<UserRole> userRoleRepository;
         private readonly IRepository<RolePermission> rolePermissionRepository;
         private readonly IRepository<Permission> permissionRepository;
-
-        public UserAppService(IRepository<User> userRepository, IRepository<UserInfo> userInfoRepository, IRepository<Role> roleRepository, IRepository<UserRole> userRoleRepository, IRepository<RolePermission> rolePermissionRepository, IRepository<Permission> permissionRepository)
+        private readonly ICache redisCache;
+        public UserAppService(IRepository<User> userRepository, IRepository<UserInfo> userInfoRepository, IRepository<Role> roleRepository, IRepository<UserRole> userRoleRepository, IRepository<RolePermission> rolePermissionRepository, IRepository<Permission> permissionRepository, ICache cache)
         {
             this.userRepository = userRepository;
             this.userInfoRepository = userInfoRepository;
@@ -31,6 +32,7 @@ namespace Abp.DoNetCore.Application
             this.userRoleRepository = userRoleRepository;
             this.rolePermissionRepository = rolePermissionRepository;
             this.permissionRepository = permissionRepository;
+            this.redisCache = cache;
         }
         public async Task<bool> CreateUserAsync(ApplicationUser input)
         {
@@ -92,7 +94,7 @@ namespace Abp.DoNetCore.Application
         private async Task<User> ValidateLoginUser(ApplicationUser input)
         {
             var users = await this.userRepository.GetAllListAsync(item => item.AccountEmail == input.AccountEmail || item.AccountCode == input.AccountCode || item.AccountPhone == input.AccountPhone);
-            if (users.Count>0)
+            if (users.Count > 0)
             {
                 return users.FirstOrDefault();
             }
@@ -105,18 +107,25 @@ namespace Abp.DoNetCore.Application
         /// <returns></returns>
         public async Task<bool> AuthorizationOfUser(ApplicationUser input)
         {
-            var haveLoginUser = await ValidateLoginUser(input);
-            if (haveLoginUser!=null)
+            //Demo for RedisCache
+            var cacheData = await redisCache.GetOrDefaultAsync(input.AccountEmail);
+            if (cacheData == null)
             {
-                //validate the password
-                var password = haveLoginUser.Password;
-                var checkResult = HashUtility.ValidatePassword(input.Password, password);
-                if (checkResult)
+                var haveLoginUser = await ValidateLoginUser(input);
+                if (haveLoginUser != null)
                 {
-                    return true;
+                    //validate the password
+                    var password = haveLoginUser.Password;
+                    var checkResult = HashUtility.ValidatePassword(input.Password, password);
+                    if (checkResult)
+                    {
+                        await redisCache.SetAsync(haveLoginUser.AccountEmail, haveLoginUser);
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }

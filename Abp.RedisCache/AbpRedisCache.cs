@@ -42,7 +42,7 @@ namespace Abp.RedisCache
             var type = value.GetType();
             if (EntityHelper.IsEntity(type))
             {
-                _database.StringSet(GetLocalizedKey(key), Serialize(type, type), absoluteExpireTime ?? slidingExpireTime ?? DefaultAbsoluteExpireTime ?? DefaultSlidingExpireTime);
+                _database.StringSet(GetLocalizedKey(key), Serialize(value, type), absoluteExpireTime ?? slidingExpireTime ?? DefaultAbsoluteExpireTime ?? DefaultSlidingExpireTime);
             }
         }
         protected virtual string Serialize(object value, Type type)
