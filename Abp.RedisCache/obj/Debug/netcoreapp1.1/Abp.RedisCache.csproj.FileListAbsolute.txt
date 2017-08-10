@@ -1,0 +1,9 @@
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\bin\Debug\netcoreapp1.1\Abp.RedisCache.deps.json
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\bin\Debug\netcoreapp1.1\Abp.RedisCache.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\obj\Debug\netcoreapp1.1\Abp.RedisCache.csprojResolveAssemblyReference.cache
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\obj\Debug\netcoreapp1.1\Abp.RedisCache.AssemblyInfo.cs
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\bin\Debug\netcoreapp1.1\Abp.RedisCache.pdb
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\bin\Debug\netcoreapp1.1\Abp.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\bin\Debug\netcoreapp1.1\Abp.pdb
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\obj\Debug\netcoreapp1.1\Abp.RedisCache.dll
+F:\WorkSpaceW10\MimeoTFS_oxu\Internal Project\MimeoOA\Abp.RedisCache\obj\Debug\netcoreapp1.1\Abp.RedisCache.pdb
