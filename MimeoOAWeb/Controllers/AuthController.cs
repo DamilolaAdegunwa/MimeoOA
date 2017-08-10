@@ -22,7 +22,7 @@ namespace MimeoOAWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetToken(ApplicationUser user)
         {
-            return Ok(await this.authorizationService.GetToken(user));
+            return Ok(await this.authorizationService.AuthorizationUser(user));
         }
     }
 }

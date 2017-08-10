@@ -3,6 +3,7 @@ using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using Abp.Domain.Uow;
 using Abp.DoNetCore.Application.Dtos;
+using Abp.DoNetCore.Application.Dtos.Users;
 using Abp.DoNetCore.Domain;
 using Abp.Runtime.Caching;
 using Abp.Utilities;
@@ -126,6 +127,42 @@ namespace Abp.DoNetCore.Application
                 return false;
             }
             return true;
+        }
+
+        public async Task<bool> AddNewRoleAsync(RoleDataTransferObject roleInfo)
+        {
+            var roleNewEntity = Mapper.Map<RoleDataTransferObject, Role>(roleInfo);
+            var result = await this.roleRepository.InsertAsync(roleNewEntity);
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<RoleDataTransferObject> UpdateRoleAsync(RoleDataTransferObject roleInfo)
+        {
+            var roleEntities = await this.roleRepository.GetAllListAsync(item => item.Id == roleInfo.Id);
+            if (roleEntities.Count > 0)
+            {
+                var roleEntity = roleEntities.First();
+                roleInfo.Mapping(roleEntity);
+
+                var result = await roleRepository.UpdateAsync(roleEntity);
+
+                return Mapper.Map<Role, RoleDataTransferObject>(result);
+            }
+            return null;
+        }
+
+        public async Task<bool> RemoveRoleAsync(Guid roleId)
+        {
+            var result = await roleRepository.UpdateAsync(roleId, item => { item.IsDeleted = true; return roleRepository.UpdateAsync(item); });
+            if (result!=null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

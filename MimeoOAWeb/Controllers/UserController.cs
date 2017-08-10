@@ -1,6 +1,7 @@
 ﻿using Abp.DoNetCore;
 using Abp.DoNetCore.Application;
 using Abp.DoNetCore.Application.Dtos;
+using Abp.DoNetCore.Application.Dtos.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,9 +16,11 @@ namespace MimeoOAWeb.Controllers
     public class UserController : BaseController
     {
         private readonly IUserAppService userAppService;
-        public UserController(IUserAppService userAppService)
+        private readonly IAbpAuthorizationService abpAuthorizationService;
+        public UserController(IUserAppService userAppService,IAbpAuthorizationService abpAuthorizationService)
         {
             this.userAppService = userAppService;
+            this.abpAuthorizationService = abpAuthorizationService;
             var request = this.Request;
         }
 
@@ -39,7 +42,8 @@ namespace MimeoOAWeb.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] ApplicationUser userInput)
         {
-            return Ok(await this.userAppService.AuthorizationOfUser(userInput));
+            //return Ok(await this.userAppService.AuthorizationOfUser(userInput));
+            return Ok(await abpAuthorizationService.AuthorizationUser(userInput));
         }
         [HttpDelete("{id}")]
         [Authorize(Policy = "MimeoOA")]
@@ -62,5 +66,11 @@ namespace MimeoOAWeb.Controllers
             return Ok(await this.userAppService.GetUsers(pageIndex, pageSize));
         }
 
+        [HttpPost("addNewRole/{id}")]
+        [Authorize(Policy = "MimeoOA")]
+        public async Task<IActionResult> AddRole(RoleDataTransferObject roleInfos)
+        {
+            return Ok();
+        }
     }
 }

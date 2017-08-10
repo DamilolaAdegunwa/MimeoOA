@@ -8,6 +8,6 @@ namespace Abp.DoNetCore.Application
 {
     public interface IAbpAuthorizationService
     {
-        Task<string> GetToken(ApplicationUser user);
+        Task<ApplicationUser> AuthorizationUser(ApplicationUser userInfo);
     }
 }
